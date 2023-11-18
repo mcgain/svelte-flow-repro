@@ -1,0 +1,97 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "games.css";
+@import "shared_sheet.css";
+@import "sheets.css";
+@import "sweote.css";
+@import "necromunda.css";
+@import "firepad.css";
+
+/* @import '@xyflow/svelte/dist/style.css'; */
+
+
+@font-face {
+  font-family: "StarJedi";
+  src: font-url("../fonts/Starjedi.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Crud";
+  src: url("../fonts/Crud.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DarkCrystal";
+  src: url("../fonts/DarkCrystal.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  font-family: "StarJedi";
+  @apply uppercase;
+  @apply text-center;
+  @apply text-3xl;
+}
+
+@font-face {
+  font-family: "CormorantGaramond-Medium";
+  src: url("../fonts/CormorantGaramond-Medium.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+.dotty img {
+  height: 20px;
+}
+
+.background-lines {
+  line-height: 45px;
+  background: repeating-linear-gradient(
+    #ffffff,
+    #ffffff 44px,
+    #000000 44px,
+    #000000 45px
+  );
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: 200;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  padding: 0.175rem 0.175rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  height: 2rem;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}

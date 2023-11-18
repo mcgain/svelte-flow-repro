@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render partial: '/layouts/packs'%>
+  </head>
+  <body>
+    <div id='sentryContainer' class='hidden'>
+    </div>
+    <main id='game' class='flex flex-wrap justify-between w-full min-h-screen gradient'>
+      <section class='w-full lg:w-1/2 h-full min-h-screen'>
+        <nav class='text-3xl text-center flex justify-around bg-black text-white whitespace-nowrap'>
+          <%= link_to sheet_owners_url, class: 'bg-black text-white hover:bg-white hover:text-black w-full font-title' do %>
+            City in Darkness
+          <% end %>
+          <%= link_to "http://blog.cityindarkness.com", class: 'bg-black text-white hover:bg-white hover:text-black w-full font-title' do %>
+            Blog
+          <% end %>
+          <% if current_user %>
+            <%= link_to users.sign_out_path, class: 'bg-black text-white hover:bg-white hover:text-black w-full font-title' do %>
+              Sign Out
+            <% end %>
+          <% end %>
+        </nav>
+        <%= yield %>
+      </section>
+      <aside class="w-1/2 h-screen fixed hidden lg:block right-0 top-0">
+        <%= image_tag(@aside_image, class: 'w-full') %>
+      </aside>
+    </main>
+  </body>
+</html>

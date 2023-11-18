@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+
+
+if [ "$(uname)" == "Darwin" ]; then
+  if ! brew list overmind &>/dev/null; then
+    echo "Installing overmind..."
+    brew install overmind
+  fi
+else
+  if ! gem list foreman -i --silent; then
+    echo "Installing foreman..."
+    gem install foreman
+  fi
+fi
+
+if [ "$(uname)" == "Darwin" ]; then
+  echo "Postgres and redis should already be running"
+else
+  sudo service postgresql status
+  if [ $? -ne 0 ]; then
+    sudo service postgresql start
+  fi
+
+  sudo service redis-server status
+  if [ $? -ne 0 ]; then
+    sudo service redis-server start
+  fi
+fi
+
+if [ "$(uname)" == "Darwin" ]; then
+  exec overmind s -f Procfile.dev "$@"
+else
+  exec foreman start -f Procfile.dev "$@"
+fi

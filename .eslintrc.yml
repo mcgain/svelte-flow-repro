@@ -1,0 +1,24 @@
+---
+parserOptions:
+  ecmaVersion: 6
+  ecmaFeatures:
+    impliedStrict: true
+env:
+  browser: true
+  node: true
+  mocha: true
+  jquery: true
+globals:
+  assert: true
+  expect: true
+  fixture: true
+  sandbox: true
+  sinon: true
+settings:
+  import/resolver:
+    node:
+      extensions:
+      - ".js"
+      - ".coffee"
+      paths:
+      - app/assets/javascripts

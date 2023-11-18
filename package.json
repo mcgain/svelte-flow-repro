@@ -1,0 +1,42 @@
+{
+  "name": "character-sheet",
+  "private": true,
+  "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@lucafabbian/firepad": "^1.5.20",
+    "@sentry/svelte": "^7.74.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "@xyflow/svelte": "^0.0.26",
+    "actioncable": "^5.2.3",
+    "autoprefixer": "^10.4.14",
+    "autosize": "^6.0.1",
+    "axios": "^1.4.0",
+    "codemirror": "^6.0.1",
+    "core-js": "^3.4.2",
+    "esbuild": "^0.17.17",
+    "esbuild-svelte": "^0.7.4",
+    "firebase": "^9.23.0",
+    "lodash": "^4.17.15",
+    "p5": "^1.8.0",
+    "postcss": "^8.4.23",
+    "rails-ujs": "^5.2.3",
+    "svelte": "^4.2.0",
+    "tailwindcss": "^3.3.1",
+    "tailwindcss-filters": "^2.0.0"
+  },
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^3.2.2",
+    "@tsconfig/svelte": "^5.0.2",
+    "eslint": "^4.14.0",
+    "eslint-config-google": "^0.9.1",
+    "prettier": "^2.8.8",
+    "svelte-check": "^3.6.0",
+    "svelte-preprocess": "^5.1.0",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "node ./bin/build_javascript.js --watch",
+    "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.css -o ./public/stylesheets/application.css --minify --watch"
+  },
+  "packageManager": "yarn@1.22.4"
+}

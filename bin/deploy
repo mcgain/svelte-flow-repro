@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+# Deploy
+echo "Deploying . . ."
+
+# check if sentry-cli is installed and exit with a failed state if not
+if ! command -v sentry-cli &> /dev/null
+then
+    echo "sentry-cli could not be found"
+    exit
+fi
+
+#  generate a random hash
+hash=$(echo $RANDOM | md5sum | cut -d' ' -f1)
+# edit the Dockerfile, replacing line ENV CACHE_BUSTER=.* with ENV CACHE_BUSTER=<hash>
+sed -i '' "s/ENV CACHE_BUSTER=.*$/ENV CACHE_BUSTER=$hash/" Dockerfile
+
+# alert sentry of the start of the deployment
+sentry-cli releases new $hash
+
+git diff Dockerfile
+git add Dockerfile
+
+git commit -m 'Deploy: update cache buster'
+
+fly deploy -y
+if [ $? -eq 0 ]
+then
+  echo "Deployment was successful."
+else
+  echo "Deployment failed."
+fi
+
+# tell sentry which commit was deployed and finalize the release
+sentry-cli releases set-commits $hash --auto
+sentry-cli releases finalize $hash
